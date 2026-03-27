@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#1e1b4b,#312e81,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow-x:hidden;
+}
+
+.card{
+    width:100%;
+    max-width:700px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(18px);
+    border-radius:24px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.35);
+    position:relative;
+}
+
+h1{
+    font-size:clamp(2rem,5vw,3rem);
+    color:white;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#f9a8d4;
+    font-size:clamp(1rem,3vw,1.3rem);
+    margin-bottom:20px;
+}
+
+.cake{
+    font-size:clamp(3rem,8vw,5rem);
+    margin-bottom:20px;
+    animation:bounce 1s infinite alternate;
+}
+
+.typing{
+    min-height:70px;
+    color:#f1f5f9;
+    line-height:1.8;
+    font-size:clamp(0.95rem,2.5vw,1.1rem);
+}
+
+.neet{
+    margin-top:20px;
+    background:rgba(255,255,255,0.08);
+    padding:18px;
+    border-radius:18px;
+    color:white;
+    line-height:1.7;
+    font-size:clamp(0.9rem,2.5vw,1rem);
+}
+
+button{
+    margin-top:20px;
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ec4899,#8b5cf6);
+    color:white;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+.hidden{
+    display:none;
+    margin-top:18px;
+    color:#fde68a;
+    font-size:1rem;
+}
+
+.spotify{
+    margin-top:25px;
+}
+
+iframe{
+    width:100%;
+    max-width:100%;
+    height:80px;
+    border-radius:12px;
+}
+
+.footer{
+    margin-top:20px;
+    color:#f9a8d4;
+    font-size:0.95rem;
+}
+
+.float{
+    position:fixed;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+@keyframes bounce{
+    from{transform:translateY(0);}
+    to{transform:translateY(-8px);}
+}
+
+@media (max-width:480px){
+    .card{
+        padding:22px 15px;
+    }
+
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<h1>🎂 Happy Birthday anjali 🎂</h1>
+<div class="subtitle">To My Future Doctor 👩‍⚕️✨</div>
+
+<div class="cake">🎂</div>
+
+<div class="typing" id="typing"></div>
+
+<div class="neet">
+🌸 This year is special because you are preparing for NEET 📚  
+Your hard work will definitely become success ✨  
+One day everyone will proudly call you Doctor 👩‍⚕️💖
+</div>
+
+<button onclick="showWish()">Open Special Wish 💌</button>
+
+<div class="hidden" id="wish">
+💖 May this birthday bring happiness, confidence and success 🌟
+</div>
+
+<div class="spotify">
+<h3 style="color:white;margin-bottom:10px;">🎵 Favorite Song</h3>
+
+<!-- Replace spotify link -->
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7hXnhouVPnOnFwCGrQMHvB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="footer">— From Aniketh 💖</div>
+
+</div>
+
+<script>
+const text="You are one of the strongest and most inspiring people I know 💖 Keep smiling always because your future is bright ✨";
+let i=0;
+
+function typing(){
+    if(i<text.length){
+        document.getElementById('typing').innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing,50);
+    }
+}
+typing();
+
+function showWish(){
+    document.getElementById('wish').style.display='block';
+}
+
+function floating(){
+    const el=document.createElement('div');
+    el.classList.add('float');
+    el.innerHTML=['💖','✨','🌸','🎂'][Math.floor(Math.random()*4)];
+    el.style.left=Math.random()*100+'vw';
+    el.style.animationDuration=(4+Math.random()*4)+'s';
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },7000);
+}
+
+setInterval(floating,500);
+</script>
+
+</body>
+</html>
